@@ -1,5 +1,5 @@
 {% set name = "mockito" %}
-{% set version = "1.2.2" %}
+{% set version = "1.4.0" %}
 
 
 package:
@@ -8,19 +8,21 @@ package:
 
 source:
   url: https://github.com/kaste/mockito-python/archive/{{ version }}.tar.gz
-  sha256: 7a86349b7db05ad0d3679167c9997a658e24790b039fc0a3c07e1a7beb772213
+  sha256: fe0614d07bf0f762f9b0e7b7183788e80941950315f58dfa2d405415afc9e65a
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python
+    - wheel
+    - setuptools
   run:
-    - python >=3.5
+    - python
 
 test:
   imports:
@@ -37,9 +39,13 @@ test:
 
 about:
   home: https://github.com/kaste/mockito-python
-  summary: Spying framework
+  summary: Mockito is a spying framework.
+  description: Mockito is a spying framework originally based on the Java library with the same name.
   license: MIT
+  license_family: MIT
   license_file: LICENSE
+  dev_url: https://github.com/kaste/mockito-python
+  doc_url: https://mockito-python.readthedocs.io
 
 extra:
   recipe-maintainers:
