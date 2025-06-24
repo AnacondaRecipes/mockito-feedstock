@@ -18,20 +18,19 @@ requirements:
   host:
     - pip
     - python
-    - wheel
-    - setuptools
+    - hatchling
   run:
     - python
 
 test:
+  source_files:
+    - tests
   imports:
     - mockito
   requires:
     - pip
     - pytest
     - numpy
-  source_files:
-    - tests/
   commands:
     - pip check
     - pytest tests
@@ -39,8 +38,10 @@ test:
 
 about:
   home: https://github.com/kaste/mockito-python
-  summary: Mockito is a spying framework.
-  description: Mockito is a spying framework originally based on the Java library with the same name.
+  summary: Mockito is a spying framework originally based on the Java library with the same name.
+  description: |
+    Mockito is a spying framework originally based on the Java library with the same name. 
+    (Actually we invented the strict stubbing mode back in 2009.)
   license: MIT
   license_family: MIT
   license_file: LICENSE
