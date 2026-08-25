@@ -1,5 +1,5 @@
 {% set name = "mockito" %}
-{% set version = "1.5.4" %}
+{% set version = "2.0.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/kaste/mockito-python/archive/{{ version }}.tar.gz
-  sha256: 20cd741cb1c74fe55b2f16c04802002d840d4cf448f59badf1d4d0c1397dd116
+  sha256: 5d8b65e0eb1573b38a18cd31c8ad70114baa9da4970c6072104de93c543416d3
 
 build:
   number: 0
-  skip: true  # [py<37]
+  skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
@@ -19,6 +19,7 @@ requirements:
     - pip
     - python
     - hatchling
+    - hatch-vcs
   run:
     - python
 
@@ -40,7 +41,7 @@ about:
   home: https://github.com/kaste/mockito-python
   summary: Mockito is a spying framework originally based on the Java library with the same name.
   description: |
-    Mockito is a spying framework originally based on the Java library with the same name. 
+    Mockito is a spying framework originally based on the Java library with the same name.
     (Actually we invented the strict stubbing mode back in 2009.)
   license: MIT
   license_family: MIT
